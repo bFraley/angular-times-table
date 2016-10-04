@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Angular Times Table</title>
@@ -11,7 +11,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <script src="https://use.fontawesome.com/a04d9e4c1c.js"></script>
 
+    <!-- My Stylesheet -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- ANGULAR 1 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
 </head>
 <body>
 
@@ -24,23 +29,14 @@
                     </span>
                 </div>
             </div>
-            
         </nav>
 
     </header>
 
-    <div class="container">
-        <h1>Hello World</h1>
+    <div class="container" ng-cloak ng-init="hello='Hello Angular'">
+        {{hello}}
     </div>
     
-
-
-
-
-
-
-
-
     <!-- Bootstrap -->
     <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
 
