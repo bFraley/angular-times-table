@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="app">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Angular Times Table</title>
@@ -14,8 +14,13 @@
     <!-- My Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 
+    <!-- Rambda -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.22.1/ramda.min.js"></script>
+
     <!-- ANGULAR 1 -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+    <script src = "app.js"></script>
 
 </head>
 <body>
@@ -33,8 +38,60 @@
 
     </header>
 
-    <div class="container" ng-cloak ng-init="hello='Hello Angular'">
-        {{hello}}
+    <div class="container" ng-cloak ng-controller='MainCtrl'>
+       <div class="row">
+           
+           <div class="form-group col-md-3 col-md-offset-3">
+               <label for="times-table-rows">Rows</label>
+               <input type="number" id="times-table-rows" ng-model="userRows" class="forms-control">
+           </div>
+           <div class="form-group col-md-3">
+               <label for="times-table-rows">Cols</label>
+               <input type="number" id="times-table-rows" ng-model="userCols" class="forms-control">
+           </div>
+       </div>
+
+       <div class="alert alert-warning" ng-show="!showTable()">
+           Please enter a positive number of rows and columns
+       </div>
+
+       <!--  ********************* -->
+       <div class="times-table" ng-show = "showTable()">
+           <h3>Times Table</h3>
+
+           <table class="table-striped table-bordered table">
+           <thead>
+                <tr>
+                    <th>X</th>
+                    <th ng-repeat="col in getCols()">
+                        {{col}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody ng-mouseleave="clearSelectedValue()">
+                <tr ng-repeat="row in getRows()">    
+                    <th>
+                        {{row}}
+                    </th>
+                
+                    <td 
+                        class="table-value"
+                        ng-repeat="col in getCols()"
+                        ng-mouseover="setSelectedValue(row, col)">
+                        {{ getTableValue(row, col) }}
+                    </td>
+                </tr>
+            </tbody>
+           </table> 
+
+           <div class="well well-lg" ng-show="selectedValue">
+               <p class="lead">
+               {{selectedValue.row}} &times; {{selectedValue.col}} = 
+               {{selectedValue.row * selectedValue.col}}
+               </p>
+            </div>  
+
+       </div>
     </div>
     
     <!-- Bootstrap -->

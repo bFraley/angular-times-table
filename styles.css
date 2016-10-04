@@ -2,3 +2,17 @@ body {
     padding-top: 70px;
 }
 
+.times-table {
+    text-align: center;
+}
+
+.times-table th {
+    text-align: center;
+}
+
+.table-value:hover {
+    background-color: #b30000;
+    color: #fff;
+    cursor: pointer;
+}
+
